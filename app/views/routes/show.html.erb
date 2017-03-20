@@ -1,7 +1,45 @@
 <p id="notice"><%= notice %></p>
 <p>
-  <strong>Name:</strong>
+  <strong>Название:</strong>
   <%= @route.name %>
 </p>
-<%= link_to 'Edit', edit_route_path(@route) %> |
-<%= link_to 'Back', routes_path %>
+
+<% if @route.trains.present? %>
+  <table>
+    <caption><strong>Поезда на маршруте</strong></caption>
+    <thead>
+      <tr>
+        <th>Номер</th>
+        <th>Маршрут</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= render @route.trains %>
+    </tbody>
+  </table>
+<% else %>
+  <strong>Поездов на маршруте нет</strong>
+<% end %>
+<br />
+<% if @route.railway_stations.present? %>
+  <table>
+    <caption><strong>Станции на маршруте</strong></caption>
+    <thead>
+      <tr>
+        <th>Название</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= render @route.railway_stations %>
+    </tbody>
+  </table>
+<% else %>
+  <strong>Станций на маршруте нет</strong>
+<% end %>
+<br />
+<%= link_to 'Изменить', edit_route_path(@route) %> |
+<%= link_to 'Назад', routes_path %>
