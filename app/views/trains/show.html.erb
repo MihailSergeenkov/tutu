@@ -10,5 +10,23 @@
   <%= @train.route.present? ? @train.route.name : 'Маршрут не назначен' %>
 </p>
 
+<p>
+  <strong>Купейных вагонов:</strong>
+  <%= @train.business_count %>
+  <strong>Кол-во верхних мест:</strong>
+  <%= @train.business_top_seats %>
+  <strong>Кол-во нижних мест:</strong>
+  <%= @train.business_bottom_seats %>
+</p>
+
+<p>
+  <strong>Плацкартных вагонов:</strong>
+  <%= @train.econom_count %>
+  <strong>Кол-во верхних мест:</strong>
+  <%= @train.econom_top_seats %>
+  <strong>Кол-во нижних мест:</strong>
+  <%= @train.econom_bottom_seats %>
+</p>
+
 <%= link_to 'Изменение', edit_train_path(@train) %> |
 <%= link_to 'Назад', trains_path %>

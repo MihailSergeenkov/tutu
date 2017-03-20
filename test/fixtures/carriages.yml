@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  train: one
+  type_carriage: MyString
+  top_seats: 1
+  bottom_seats: 1
+
+two:
+  train: two
+  type_carriage: MyString
+  top_seats: 1
+  bottom_seats: 1

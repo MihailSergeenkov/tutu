@@ -1,0 +1,37 @@
+<%= form_for(carriage) do |f| %>
+  <% if carriage.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(carriage.errors.count, "error") %> prohibited this carriage from being saved:</h2>
+
+      <ul>
+      <% carriage.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :train %>
+    <%= f.collection_select :train_id, Train.all, :id, :number %>
+  </div>
+
+  <div class="field">
+    <%= f.label :type_carriage %>
+    <%= f.select :type_carriage, @carriage.types_select %>
+  </div>
+
+  <div class="field">
+    <%= f.label :top_seats %>
+    <%= f.number_field :top_seats, in: 1..50, step: 1 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :bottom_seats %>
+    <%= f.number_field :bottom_seats, in: 1..50, step: 1 %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
