@@ -12,20 +12,46 @@
 
 <p>
   <strong>Купейных вагонов:</strong>
-  <%= @train.business_count %>
-  <strong>Кол-во верхних мест:</strong>
-  <%= @train.business_top_seats %>
-  <strong>Кол-во нижних мест:</strong>
-  <%= @train.business_bottom_seats %>
+  <%= @train.coupe_count %>
+  <% if @train.coupe.present? %>
+    <strong>Кол-во верхних мест:</strong>
+    <%= @train.coupe.top_seats %>
+    <strong>Кол-во нижних мест:</strong>
+    <%= @train.coupe.bottom_seats %>
+  <% end %>
 </p>
 
 <p>
   <strong>Плацкартных вагонов:</strong>
-  <%= @train.econom_count %>
-  <strong>Кол-во верхних мест:</strong>
-  <%= @train.econom_top_seats %>
-  <strong>Кол-во нижних мест:</strong>
-  <%= @train.econom_bottom_seats %>
+  <%= @train.economy_count %>
+  <% if @train.economy.present? %>
+    <strong>Кол-во верхних мест:</strong>
+    <%= @train.economy.top_seats %>
+    <strong>Кол-во нижних мест:</strong>
+    <%= @train.economy.bottom_seats %>
+    <strong>Кол-во верхних боковых мест:</strong>
+    <%= @train.economy.side_top_seats %>
+    <strong>Кол-во нижних боковых мест:</strong>
+    <%= @train.economy.side_bottom_seats %>
+  <% end %>
+</p>
+
+<p>
+  <strong>СВ вагонов:</strong>
+  <%= @train.business_count %>
+  <% if @train.business.present? %>
+    <strong>Кол-во нижних мест:</strong>
+    <%= @train.business.bottom_seats %>
+  <% end %>
+</p>
+
+<p>
+  <strong>Сидячих вагонов:</strong>
+  <%= @train.seat_count %>
+  <% if @train.business.present? %>
+    <strong>Кол-во мест:</strong>
+    <%= @train.seat.seats %>
+  <% end %>
 </p>
 
 <%= link_to 'Изменение', edit_train_path(@train) %> |

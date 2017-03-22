@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Номер:</strong>
+  <%= @carriage.number %>
+</p>
+
+<p>
+  <strong>Поезд:</strong>
+  <%= link_to @carriage.train.number, train_path(@carriage.train) %>
+</p>
+
+<p>
+  <strong>Тип:</strong>
+  Плацкарт
+</p>
+
+<p>
+  <strong>Кол-во верхних мест:</strong>
+  <%= @carriage.top_seats %>
+</p>
+
+<p>
+  <strong>Кол-во нижних мест:</strong>
+  <%= @carriage.bottom_seats %>
+</p>
+
+<p>
+  <strong>Кол-во верхних боковых мест:</strong>
+  <%= @carriage.side_top_seats %>
+</p>
+
+<p>
+  <strong>Кол-во нижних боковых мест:</strong>
+  <%= @carriage.side_bottom_seats %>
+</p>
+
+<%= link_to 'Изменение', edit_carriage_path(@carriage) %> |
+<%= link_to 'Назад', carriages_path %>

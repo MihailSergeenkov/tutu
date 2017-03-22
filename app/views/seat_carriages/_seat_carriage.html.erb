@@ -1,0 +1,13 @@
+<tr>
+  <td><%= seat_carriage.number %></td>
+  <td><%= link_to seat_carriage.train.number, train_path(seat_carriage.train) %></td>
+  <td>Сидячий</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td><%= seat_carriage.seats %></td>
+  <td><%= link_to 'Посмотреть', carriage_path(seat_carriage) %></td>
+  <td><%= link_to 'Редактировать', edit_carriage_path(seat_carriage) %></td>
+  <td><%= link_to 'Удалить', carriage_path(seat_carriage), method: :delete, data: { confirm: 'Вы уверены?' } %></td>
+</tr>

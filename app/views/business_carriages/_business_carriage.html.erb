@@ -1,0 +1,13 @@
+<tr>
+  <td><%= business_carriage.number %></td>
+  <td><%= link_to business_carriage.train.number, train_path(business_carriage.train) %></td>
+  <td>СВ</td>
+  <td></td>
+  <td><%= business_carriage.bottom_seats %></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td><%= link_to 'Посмотреть', carriage_path(business_carriage) %></td>
+  <td><%= link_to 'Редактировать', edit_carriage_path(business_carriage) %></td>
+  <td><%= link_to 'Удалить', carriage_path(business_carriage), method: :delete, data: { confirm: 'Вы уверены?' } %></td>
+</tr>

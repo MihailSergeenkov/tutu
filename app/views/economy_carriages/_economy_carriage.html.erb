@@ -1,0 +1,13 @@
+<tr>
+  <td><%= economy_carriage.number %></td>
+  <td><%= link_to economy_carriage.train.number, train_path(economy_carriage.train) %></td>
+  <td>Плацкарт</td>
+  <td><%= economy_carriage.top_seats %></td>
+  <td><%= economy_carriage.bottom_seats %></td>
+  <td><%= economy_carriage.side_top_seats %></td>
+  <td><%= economy_carriage.side_bottom_seats %></td>
+  <td></td>
+  <td><%= link_to 'Посмотреть', carriage_path(economy_carriage) %></td>
+  <td><%= link_to 'Редактировать', edit_carriage_path(economy_carriage) %></td>
+  <td><%= link_to 'Удалить', carriage_path(economy_carriage), method: :delete, data: { confirm: 'Вы уверены?' } %></td>
+</tr>

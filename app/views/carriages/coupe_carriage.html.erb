@@ -1,13 +1,18 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Номер:</strong>
+  <%= @carriage.number %>
+</p>
+
+<p>
   <strong>Поезд:</strong>
   <%= link_to @carriage.train.number, train_path(@carriage.train) %>
 </p>
 
 <p>
   <strong>Тип:</strong>
-  <%= @carriage.type_carriage %>
+  Купе
 </p>
 
 <p>

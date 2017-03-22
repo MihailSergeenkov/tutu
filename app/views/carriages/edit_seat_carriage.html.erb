@@ -1,0 +1,32 @@
+<%= form_for(@carriage, url: carriage_path(@carriage)) do |f| %>
+  <% if @carriage.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@carriage.errors.count, "error") %> prohibited this carriage from being saved:</h2>
+
+      <ul>
+      <% @carriage.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :number %>
+    <%= f.text_field :number %>
+  </div>
+
+  <div class="field">
+    <%= f.label :train %>
+    <%= f.collection_select :train_id, Train.all, :id, :number %>
+  </div>
+
+  <div class="field">
+    <%= f.label :seats %>
+    <%= f.number_field :seats, in: 1..100, step: 1 %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,10 +1,10 @@
-<%= form_for(carriage, url: carriages_path) do |f| %>
-  <% if carriage.errors.any? %>
+<%= form_for(@carriage, url: carriage_path(@carriage)) do |f| %>
+  <% if @carriage.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(carriage.errors.count, "error") %> prohibited this carriage from being saved:</h2>
+      <h2><%= pluralize(@carriage.errors.count, "error") %> prohibited this carriage from being saved:</h2>
 
       <ul>
-      <% carriage.errors.full_messages.each do |message| %>
+      <% @carriage.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -19,11 +19,6 @@
   <div class="field">
     <%= f.label :train %>
     <%= f.collection_select :train_id, Train.all, :id, :number %>
-  </div>
-
-  <div class="field">
-    <%= f.label :type %>
-    <%= f.select :type, @carriage.types_select %>
   </div>
 
   <div class="field">
@@ -44,11 +39,6 @@
   <div class="field">
     <%= f.label :side_bottom_seats %>
     <%= f.number_field :side_bottom_seats, in: 1..50, step: 1 %>
-  </div>
-
-  <div class="field">
-    <%= f.label :seats %>
-    <%= f.number_field :seats, in: 1..100, step: 1 %>
   </div>
 
   <div class="actions">
