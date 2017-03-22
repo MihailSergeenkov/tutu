@@ -16,4 +16,8 @@ class Train < ApplicationRecord
   delegate :side_top_seats, to: :carriages
   delegate :side_bottom_seats, to: :carriages
   delegate :seats, to: :carriages
+
+  def seats_count(carriage_type, seats_type)
+    carriages.where(type: carriage_type).sum(seats_type)
+  end
 end

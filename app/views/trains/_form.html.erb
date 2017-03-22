@@ -17,6 +17,11 @@
   </div>
 
   <div class="field">
+    <%= f.label :tail %>
+    <%= f.check_box :tail %>
+  </div>
+
+  <div class="field">
     <%= f.label :route %>
     <%= f.collection_select :route_id, Route.all, :id, :name %>
   </div>

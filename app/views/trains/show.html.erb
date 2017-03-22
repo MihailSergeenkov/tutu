@@ -11,6 +11,11 @@
 </p>
 
 <p>
+  <strong>с головы/c хвоста поезда:</strong>
+  <%= @train.tail? ? 'Нумерация c хвоста поезда' : 'Нумерация c головы поезда' %>
+</p>
+
+<p>
   <strong>Купейных вагонов:</strong>
   <%= @train.coupe_count %>
   <% if @train.coupe.present? %>
@@ -53,6 +58,23 @@
     <%= @train.seat.seats %>
   <% end %>
 </p>
+
+<% if @train.carriages.present? %>
+  <strong>Вагоны списком:</strong>
+  <% if @train.tail? %>
+    <% @train.carriages.desc_position.each do |carriage| %>
+      <p>
+        <strong><%= carriage.position %>: </strong><%= link_to carriage.number, carriage_path(carriage) %>
+      </p>
+    <% end %>
+  <% else %>
+    <% @train.carriages.asc_position.each do |carriage| %>
+      <p>
+        <strong><%= carriage.position %>: </strong><%= link_to carriage.number, carriage_path(carriage) %>
+      </p>
+    <% end %>
+  <% end %>
+<% end %>
 
 <%= link_to 'Изменение', edit_train_path(@train) %> |
 <%= link_to 'Назад', trains_path %>

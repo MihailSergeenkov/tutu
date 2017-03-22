@@ -1,7 +1,13 @@
 class Carriage < ApplicationRecord
   belongs_to :train
 
-  validates :number, presence: true
+  validates :number, :position, presence: true
+  validates :position, uniqueness: { scope: :train_id }
+
+  before_validation :set_position
+
+  scope :desc_position, -> { order('position DESC') }
+  scope :asc_position, -> { order('position ASC') }
 
   scope :economy, -> { where(type: 'EconomyCarriage') }
   scope :coupe, -> { where(type: 'CoupeCarriage') }
@@ -24,5 +30,15 @@ class Carriage < ApplicationRecord
 
   def types_select
     Carriage.types.map { |type| [type.to_s, type.to_s] }
+  end
+
+  private
+
+  def set_position
+    if train.carriages.present?
+      self.position = train.carriages.maximum(:position) + 1
+    else
+      self.position = 1
+    end
   end
 end
