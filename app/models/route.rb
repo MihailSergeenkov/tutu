@@ -11,7 +11,7 @@ class Route < ApplicationRecord
   private
 
   def set_name
-    self.name = "#{railway_stations.ordered.first.title} - #{railway_stations.ordered.last.title}"
+    self.name = self.persisted? ? "#{railway_stations.ordered.first.title} - #{railway_stations.ordered.last.title}" : "#{railway_stations.first.title} - #{railway_stations.last.title}"
   end
 
   def stations_count
