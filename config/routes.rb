@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :trains do
     resources :carriages, shallow: true, except: :index
+    resources :tickets, shallow: true, only: [:show, :new, :create]
   end
   resources :railway_stations do
     member do

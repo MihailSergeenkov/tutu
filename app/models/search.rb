@@ -14,7 +14,7 @@ class Search
     result = if routes.present?
       routes.map do |route|
         route.trains.inject([]) do |hash, train|
-          hash << { train: train.number, route: route.name, start_station: start_station.title, finish_station: finish_station.title, arrival_time: finish_station.arrival_time_in(route), departure_time: start_station.departure_time_in(route) }
+          hash << { train_id: train.id, start_station_id: start_station.id, finish_station_id: finish_station.id, train: train.number, route: route.name, start_station: start_station.title, finish_station: finish_station.title, arrival_time: finish_station.arrival_time_in(route), departure_time: start_station.departure_time_in(route) }
         end
       end
     else
