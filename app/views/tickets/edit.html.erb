@@ -1,4 +1,5 @@
-<h1>Новый билет</h1>
+<h1>Изменение билета</h1>
+
 <%= form_for(@ticket) do |f| %>
   <% if @ticket.errors.any? %>
     <div id="error_explanation">
@@ -26,11 +27,22 @@
     <%= f.label :passport_number %>
     <%= f.text_field :passport_number %>
   </div>
-  <%= f.hidden_field :start_station_id, value: @start_station.id %>
-  <%= f.hidden_field :finish_station_id, value: @finish_station.id %>
-  <%= f.hidden_field :train_id, value: @train.id %>
+  <div class="field">
+    <%= f.label :start_station %>
+    <%= f.collection_select :start_station_id, RailwayStation.all, :id, :title %>
+  </div>
+  <div class="field">
+    <%= f.label :finish_station %>
+    <%= f.collection_select :finish_station_id, RailwayStation.all, :id, :title %>
+  </div>
+  <div class="field">
+    <%= f.label :train %>
+    <%= f.collection_select :train_id, Train.all, :id, :number %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
-<%= link_to 'Назад', search_path %>
+
+<%= link_to 'Посмотреть', ticket_path(@ticket) %> |
+<%= link_to 'Назад', tickets_path %>

@@ -15,7 +15,7 @@
     <% else %>
       <p><%= link_to 'Войти', new_user_session_path %></p>
     <% end %>
-    <p class="notice"><%= notice %></p>
+    <p id="notice" class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
     <%= yield %>

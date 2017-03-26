@@ -1,20 +1,24 @@
 class TicketsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_train, except: :show
-  before_action :set_ticket, only: :show
+  before_action :check_admin, only: [:edit, :update]
+  before_action :set_ticket, only: [:show, :edit, :update, :destroy]
+  before_action :check_owner, only: [:show, :destroy]
+
+  def index
+    @tickets = Ticket.find_tickets(current_user)
+  end
 
   def show; end
 
   def new
+    @train = Train.find(params[:train_id])
     @start_station = RailwayStation.find(params[:start_station_id])
     @finish_station = RailwayStation.find(params[:finish_station_id])
     @ticket = @train.tickets.new
   end
 
   def create
-    @start_station = RailwayStation.find(params[:ticket][:start_station_id])
-    @finish_station = RailwayStation.find(params[:ticket][:finish_station_id])
-    @ticket = @train.tickets.new(ticket_params.merge(user_id: current_user.id))
+    @ticket = current_user.tickets.new(ticket_params)
 
     if @ticket.save
       redirect_to @ticket
@@ -23,17 +27,36 @@ class TicketsController < ApplicationController
     end
   end
 
-  private
+  def edit; end
 
-  def set_train
-    @train = Train.find(params[:train_id])
+  def update
+    if @ticket.update(ticket_params)
+      redirect_to @ticket
+    else
+      render :edit
+    end
   end
+
+  def destroy
+    @ticket.destroy
+    redirect_to tickets_path
+  end
+
+  private
 
   def set_ticket
     @ticket = Ticket.find(params[:id])
   end
 
   def ticket_params
-    params.require(:ticket).permit(:first_name, :last_name, :second_name, :passport_number, :start_station_id, :finish_station_id)
+    params.require(:ticket).permit(:first_name, :last_name, :second_name, :passport_number, :start_station_id, :finish_station_id, :train_id)
+  end
+
+  def check_admin
+    redirect_to tickets_path, alert: 'У вас нет прав на это действие!' unless current_user.admin?
+  end
+
+  def check_owner
+    redirect_to tickets_path, alert: 'У вас нет прав на это действие!' unless  current_user.admin? || @ticket.user == current_user
   end
 end
