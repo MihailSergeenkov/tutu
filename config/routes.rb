@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     end
 
     resources :routes
+    resource :resource, only: :show
   end
 
   resources :tickets, shallow: true

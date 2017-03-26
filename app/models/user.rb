@@ -4,4 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
   has_many :tickets
+
+  def fullname
+    "#{first_name} #{last_name}"
+  end
 end
