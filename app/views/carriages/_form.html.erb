@@ -1,4 +1,4 @@
-<%= form_for(carriage, url: carriages_path) do |f| %>
+<%= form_for([train, carriage]) do |f| %>
   <% if carriage.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(carriage.errors.count, "error") %> prohibited this carriage from being saved:</h2>
@@ -14,11 +14,6 @@
   <div class="field">
     <%= f.label :number %>
     <%= f.text_field :number %>
-  </div>
-
-  <div class="field">
-    <%= f.label :train %>
-    <%= f.collection_select :train_id, Train.all, :id, :number %>
   </div>
 
   <div class="field">

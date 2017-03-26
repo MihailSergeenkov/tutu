@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
-  resources :trains
+  resources :trains do
+    resources :carriages, shallow: true, except: :index
+    resources :tickets, shallow: true, only: [:show, :new, :create]
+  end
   resources :railway_stations do
-    patch :position, on: :member
+    member do
+      patch :position
+      patch :time
+    end
   end
   resources :routes
-  resources :carriages
+  resource :search, only: [:show, :create]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

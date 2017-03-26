@@ -1,37 +1,30 @@
 class CarriagesController < ApplicationController
+  before_action :set_train, only: [:new, :create]
   before_action :set_carriage, only: [:show, :edit, :update, :destroy]
 
-  def index
-    @carriages = Carriage.all
-  end
-
-  def show
-    render @carriage.type.underscore.to_sym
-  end
+  def show; end
 
   def new
-    @carriage = Carriage.new
+    @carriage = @train.carriages.new
   end
 
-  def edit
-    render "edit_#{@carriage.type.underscore}".to_sym
-  end
+  def edit; end
 
   def create
-    @carriage = Carriage.new(carriage_params)
+    @carriage = @train.carriages.new(carriage_params)
 
     if @carriage.save
-      redirect_to carriage_path(@carriage)
+      redirect_to @carriage.becomes Carriage
     else
       render :new
     end
   end
 
   def update
-    if @carriage.update(send("#{@carriage.type.underscore}_params".to_sym))
-      redirect_to carriage_path(@carriage)
+    if @carriage.update(carriage_params)
+      redirect_to @carriage
     else
-      render "edit_#{@carriage.type.underscore}".to_sym
+      render :edit
     end
   end
 
@@ -43,25 +36,14 @@ class CarriagesController < ApplicationController
   private
 
   def set_carriage
-    @carriage = Carriage.find(params[:id])
+    @carriage = Carriage.find(params[:id]).becomes Carriage
   end
 
   def carriage_params
     params.require(:carriage).permit(:number, :type, :train_id, :top_seats, :bottom_seats, :side_top_seats, :side_bottom_seats, :seats)
   end
 
-  def seat_carriage_params
-    params.require(:seat_carriage).permit(:number, :type, :train_id, :seats)
-  end
-
-  def business_carriage_params
-    params.require(:business_carriage).permit(:number, :type, :train_id, :bottom_seats)
-  end
-
-  def economy_carriage_params
-    params.require(:economy_carriage).permit(:number, :type, :train_id, :top_seats, :bottom_seats, :side_top_seats, :side_bottom_seats)
-  end
-  def coupe_carriage_params
-    params.require(:coupe_carriage).permit(:number, :type, :train_id, :top_seats, :bottom_seats)
+  def set_train
+    @train = Train.find(params[:train_id])
   end
 end

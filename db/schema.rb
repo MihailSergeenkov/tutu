@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170322100544) do
+ActiveRecord::Schema.define(version: 20170324185111) do
 
   create_table "carriages", force: :cascade do |t|
     t.integer  "train_id"
@@ -39,6 +39,8 @@ ActiveRecord::Schema.define(version: 20170322100544) do
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
     t.integer  "position"
+    t.time     "arrival_time"
+    t.time     "departure_time"
     t.index ["railway_station_id"], name: "index_railway_stations_routes_on_railway_station_id"
     t.index ["route_id"], name: "index_railway_stations_routes_on_route_id"
   end
@@ -54,6 +56,10 @@ ActiveRecord::Schema.define(version: 20170322100544) do
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
     t.integer  "user_id"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "second_name"
+    t.string   "passport_number"
     t.index ["finish_station_id"], name: "index_tickets_on_finish_station_id"
     t.index ["start_station_id"], name: "index_tickets_on_start_station_id"
     t.index ["train_id"], name: "index_tickets_on_train_id"
@@ -75,6 +81,7 @@ ActiveRecord::Schema.define(version: 20170322100544) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "username"
   end
 
 end

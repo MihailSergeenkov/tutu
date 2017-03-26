@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Поезд:</strong>
+  <%= @ticket.train.number %>
+</p>
+<p>
+  <strong>Маршрут:</strong>
+  <%= @ticket.train.route.name %>
+</p>
+<p>
+  <strong>Отправление из:</strong>
+  <%= @ticket.start_station.title %>
+</p>
+<p>
+  <strong>Прибытие в:</strong>
+  <%= @ticket.finish_station.title %>
+</p>
+<p>
+  <strong>Фамилия:</strong>
+  <%= @ticket.first_name %>
+</p>
+<p>
+  <strong>Имя:</strong>
+  <%= @ticket.last_name %>
+</p>
+<p>
+  <strong>Отчество:</strong>
+  <%= @ticket.second_name %>
+</p>
+<p>
+  <strong>Номер паспорта:</strong>
+  <%= @ticket.passport_number %>
+</p>
+<p>
+  <strong>Покупатель</strong>
+  <%= @ticket.user.username %>
+</p>
+
+<%= link_to 'Назад', train_path(@ticket.train) %>

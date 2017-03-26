@@ -4,7 +4,7 @@ class Carriage < ApplicationRecord
   validates :number, :position, presence: true
   validates :position, uniqueness: { scope: :train_id }
 
-  before_validation :set_position
+  before_validation :set_position, on: :create
 
   scope :desc_position, -> { order('position DESC') }
   scope :asc_position, -> { order('position ASC') }
@@ -35,7 +35,7 @@ class Carriage < ApplicationRecord
   private
 
   def set_position
-    if train.carriages.present?
+    if train.carriages.count != 0
       self.position = train.carriages.maximum(:position) + 1
     else
       self.position = 1
