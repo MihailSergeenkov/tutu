@@ -42,7 +42,7 @@
           <td><%= result[:finish_station] %></td>
           <td><%= result[:departure_time] %></td>
           <td><%= result[:arrival_time] %></td>
-          <td><%= link_to 'Купить', new_train_ticket_path(Train.find(result[:train_id])) %>
+          <td>
             <%= form_tag(new_train_ticket_path(Train.find(result[:train_id])), method: :get) do %>
               <%= hidden_field_tag(:start_station_id, result[:start_station_id]) %>
               <%= hidden_field_tag(:finish_station_id, result[:finish_station_id]) %>

@@ -34,7 +34,7 @@
 </p>
 <p>
   <strong>Покупатель</strong>
-  <%= @ticket.user.username %>
+  <%= @ticket.user.email %>
 </p>
 
-<%= link_to 'Назад', train_path(@ticket.train) %>
+<%= link_to 'Назад', search_path %>

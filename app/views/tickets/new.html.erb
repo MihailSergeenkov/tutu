@@ -11,10 +11,6 @@
     </div>
   <% end %>
   <div class="field">
-    <%= f.label :user, 'Я (покупатель)' %>
-    <%= f.collection_select :user_id, User.all, :id, :username %>
-  </div>
-  <div class="field">
     <%= f.label :first_name %>
     <%= f.text_field :first_name%>
   </div>
