@@ -1,22 +1,24 @@
-<%= form_for([:admin, railway_station]) do |f| %>
-  <% if railway_station.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= t('common.errors') %></h2>
+<div class="row">
+  <%= form_for([:admin, railway_station], html: { class: 'form-horizontal col-sm-6', role: 'form' }) do |f| %>
+    <% if railway_station.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= t('common.errors') %></h2>
 
-      <ul>
-      <% railway_station.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% railway_station.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.label :title, class: 'col-sm-3 control-label' %>
+      <%= f.text_field :title, class: 'col-sm-3 form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.submit "#{@railway_station.new_record? ? t('common.create') : t('common.update')}", class: 'form-control' %>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "#{@railway_station.new_record? ? t('common.create') : t('common.update')}" %>
-  </div>
-<% end %>
+</div>

@@ -1,6 +1,6 @@
-<h1><%= t('.title') %></h1>
+<h3><%= t('.title') %></h3>
 
-<table>
+<table class='table table-hover'>
   <thead>
     <tr>
       <th><%= t('.name') %></th>
@@ -15,4 +15,4 @@
 
 <br>
 
-<%= link_to t('.new_station'), new_admin_railway_station_path %>
+<%= link_to t('.new_station'), new_admin_railway_station_path, class: 'btn btn-primary' %>

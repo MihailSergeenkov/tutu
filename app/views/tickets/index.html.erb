@@ -1,6 +1,6 @@
-<h1><%= t('.title') %></h1>
+<h3><%= t('.title') %></h3>
 
-<table>
+<table class='table table-hover'>
   <thead>
     <tr>
       <th><%= t('.train_number_title') %></th>
@@ -18,4 +18,4 @@
 
 <br>
 
-<%= link_to t('common.back'), search_path %>
+<%= link_to t('common.back'), search_path, class: 'btn btn-primary' %>

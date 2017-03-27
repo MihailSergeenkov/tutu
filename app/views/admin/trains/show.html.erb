@@ -74,6 +74,6 @@
   <% end %>
 <% end %>
 
-<%= link_to t('.new_carriage_button'), new_admin_train_carriage_path(@train) %> |
-<%= link_to t('common.edit'), edit_admin_train_path(@train) %> |
-<%= link_to t('common.back'), admin_trains_path %>
+<%= link_to t('.new_carriage_button'), new_admin_train_carriage_path(@train), class: 'btn btn-primary' %> |
+<%= link_to t('common.edit'), edit_admin_train_path(@train), class: 'btn btn-primary' %> |
+<%= link_to t('common.back'), admin_trains_path, class: 'btn btn-primary' %>

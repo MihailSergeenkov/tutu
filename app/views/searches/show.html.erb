@@ -1,57 +1,59 @@
-<table>
-  <caption><strong><%= t('.title') %></strong></caption>
-  <thead>
-    <tr>
-      <th><%= t('.start_finish_station_title') %></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <tr>
-      <td>
-        <%= form_tag search_path do %>
-          <%= select_tag :start_station_id, options_from_collection_for_select(@railway_stations, :id, :title) %>
-          <%= select_tag :finish_station_id, options_from_collection_for_select(@railway_stations, :id, :title) %>
-          <%= submit_tag t('.find_button') %>
-        <% end %>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<% if @results.present? %>
+<div class="row">
   <table>
-    <caption><strong><%= t('.find_result') %></strong></caption>
+    <caption><strong><%= t('.title') %></strong></caption>
     <thead>
       <tr>
-        <th><%= t('.train_number_title') %></th>
-        <th><%= t('.train_route_title') %></th>
-        <th><%= t('.route_start_station') %></th>
-        <th><%= t('.route_finish_station') %></th>
-        <th><%= t('.time_departure') %></th>
-        <th><%= t('.time_arrival') %></th>
-        <th></th>
+        <th><%= t('.start_finish_station_title') %></th>
       </tr>
     </thead>
 
     <tbody>
-      <% @results.each do |result| %>
-        <tr>
-          <td><%= result[:train] %></td>
-          <td><%= result[:route] %></td>
-          <td><%= result[:start_station] %></td>
-          <td><%= result[:finish_station] %></td>
-          <td><%= result[:departure_time] %></td>
-          <td><%= result[:arrival_time] %></td>
-          <td>
-            <%= form_tag(new_ticket_path, method: :get) do %>
-              <%= hidden_field_tag(:train_id, result[:train_id]) %>
-              <%= hidden_field_tag(:start_station_id, result[:start_station_id]) %>
-              <%= hidden_field_tag(:finish_station_id, result[:finish_station_id]) %>
-              <%= submit_tag t('.buy_button') %>
-            <% end %>
-          </td>
-        </tr>
-      <% end %>
+      <tr>
+        <td>
+          <%= form_tag search_path do %>
+            <%= select_tag :start_station_id, options_from_collection_for_select(@railway_stations, :id, :title) %>
+            <%= select_tag :finish_station_id, options_from_collection_for_select(@railway_stations, :id, :title) %>
+            <%= submit_tag t('.find_button'), class: 'btn btn-primary btn-xs' %>
+          <% end %>
+        </td>
+      </tr>
     </tbody>
   </table>
-<% end %>
+  <% if @results.present? %>
+    <table class='table table-hover'>
+      <caption><strong><%= t('.find_result') %></strong></caption>
+      <thead>
+        <tr>
+          <th><%= t('.train_number_title') %></th>
+          <th><%= t('.train_route_title') %></th>
+          <th><%= t('.route_start_station') %></th>
+          <th><%= t('.route_finish_station') %></th>
+          <th><%= t('.time_departure') %></th>
+          <th><%= t('.time_arrival') %></th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @results.each do |result| %>
+          <tr>
+            <td><%= result[:train] %></td>
+            <td><%= result[:route] %></td>
+            <td><%= result[:start_station] %></td>
+            <td><%= result[:finish_station] %></td>
+            <td><%= result[:departure_time] %></td>
+            <td><%= result[:arrival_time] %></td>
+            <td>
+              <%= form_tag(new_ticket_path, method: :get) do %>
+                <%= hidden_field_tag(:train_id, result[:train_id]) %>
+                <%= hidden_field_tag(:start_station_id, result[:start_station_id]) %>
+                <%= hidden_field_tag(:finish_station_id, result[:finish_station_id]) %>
+                <%= submit_tag t('.buy_button'), class: 'btn btn-primary' %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+</div>

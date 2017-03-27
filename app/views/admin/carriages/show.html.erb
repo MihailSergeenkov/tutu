@@ -51,5 +51,5 @@
   </p>
 <% end %>
 
-<%= link_to t('common.edit'), edit_admin_carriage_path(@carriage) %> |
-<%= link_to t('common.back'), admin_train_path(@carriage.train) %>
+<%= link_to t('common.edit'), edit_admin_carriage_path(@carriage), class: 'btn btn-primary' %> |
+<%= link_to t('common.back'), admin_train_path(@carriage.train), class: 'btn btn-primary' %>
