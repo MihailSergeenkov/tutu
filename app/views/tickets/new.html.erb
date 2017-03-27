@@ -1,8 +1,8 @@
-<h1>Новый билет</h1>
+<h1><%= t('.title') %></h1>
 <%= form_for(@ticket) do |f| %>
   <% if @ticket.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@ticket.errors.count, "error") %> prohibited this route from being saved:</h2>
+      <h2><%= t('common.errors') %></h2>
       <ul>
       <% @ticket.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -30,7 +30,7 @@
   <%= f.hidden_field :finish_station_id, value: @finish_station.id %>
   <%= f.hidden_field :train_id, value: @train.id %>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit t('common.create') %>
   </div>
 <% end %>
-<%= link_to 'Назад', search_path %>
+<%= link_to t('common.back'), search_path %>

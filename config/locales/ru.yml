@@ -1,0 +1,124 @@
+ru:
+  layouts:
+    application:
+      sign_in: 'Войти'
+      sign_out: 'Выйти'
+    admin:
+      sign_in: 'Войти'
+      sign_out: 'Выйти'
+  common:
+    back: 'Назад'
+    edit: 'Изменение'
+    show: 'Посмотреть'
+    delete: 'Удалить'
+    create: 'Создать'
+    update: 'Изменить'
+    errors: 'При заполнении формы возникли ошибки'
+  admin:
+    trains:
+      index:
+        title: 'Список поездов'
+        number: 'Номер'
+        route: 'Маршрут'
+        new_train: 'Новый поезд'
+      new:
+        title: 'Новый поезд'
+      show:
+        train_number_title: 'Номер'
+        train_route_title: 'Маршрут'
+        train_route_unknown: 'Маршрут не назначен'
+        train_tail_title: 'с головы/c хвоста поезда'
+        train_tail_true: 'Нумерация c хвоста поезда'
+        train_tail_false: 'Нумерация c головы поезда'
+        train_coupe_carriages: 'Купейных вагонов'
+        train_top_seats_count: 'Кол-во верхних мест'
+        train_bottom_seats_count: 'Кол-во нижних мест'
+        train_economy_carriages: 'Плацкартных вагонов'
+        train_side_top_seats_count: 'Кол-во верхних боковых мест'
+        train_side_bottom_seats_count: 'Кол-во нижних боковых мест'
+        train_business_carriages: 'СВ вагонов'
+        train_seat_carriages: 'Сидячих вагонов'
+        train_seats_count: 'Кол-во мест'
+        carriages_list_title: 'Вагоны списком'
+        new_carriage_button: 'Добавить вагон'
+      edit:
+        title: 'Изменение поезда'
+    routes:
+      index:
+        title: 'Список Маршрутов'
+        name: 'Название'
+        trains_count: 'Кол-во поездов'
+        new_route: 'Новый маршрут'
+      new:
+        title: 'Новый маршрут'
+      show:
+        route_name_title: 'Название'
+        trains_on_route: 'Поезда на маршруте'
+        train_number_title: 'Номер'
+        train_route_title: 'Маршрут'
+        no_trains_on_route: 'Поездов на маршруте нет'
+        station_on_route: 'Станции на маршруте'
+        route_name_title: 'Название'
+        route_position_title: 'Позиция'
+        route_departure_arrival_title: 'Прибытие/Убитие'
+        save_station_position_button: 'Сохранить'
+        save_time_button: 'Сохранить'
+        no_stations_on_route: 'Станций на маршруте нет'
+      edit:
+        title: 'Изменение маршрута'
+    railway_stations:
+      index:
+        title: 'Список железнодорожных станций'
+        name: 'Название'
+        new_station: 'Новая железнодорожная станция'
+      new:
+        title: 'Новая железнодорожная станция'
+      show:
+        station_name_title: 'Название'
+      edit:
+        title: 'Изменение железнодорожной станции'
+    carriages:
+      new:
+        title: 'Новый вагон'
+      show:
+        carriage_number_title: 'Номер'
+        carriage_train_title: 'Поезд'
+        carriage_type_title: 'Тип'
+        carriage_position_title: 'Порядковый номер'
+        carriage_top_seats_count: 'Кол-во верхних мест'
+        carriage_bottom_seats_count: 'Кол-во нижних мест'
+        carriage_side_top_seats_count: 'Кол-во верхних боковых мест'
+        carriage_side_bottom_seats_count: 'Кол-во нижних боковых мест'
+        carriage_seats_count: 'Кол-во мест'
+      edit:
+        title: 'Изменение вагона'
+    resources:
+      show:
+        title: 'Список ресурсов'
+        trains: 'Поезда'
+        stations: 'Станции'
+        routes: 'Маршруты'
+        tickets: 'Билеты'
+        search: 'Поиск'
+  searches:
+    show:
+      title: 'Поиск билета'
+      start_finish_station_title: 'Начальная/Конечная станция'
+      find_button: 'Найти'
+      find_result: 'Результат поиска'
+      train_number_title: 'Номер поезда'
+      train_route_title: 'Маршрут'
+      route_start_station: 'Начальная станция'
+      route_finish_station: 'Конечная станция'
+      time_departure: 'Отправление со станции'
+      time_arrival: 'Прибытие на конечную станцию'
+      buy_button: 'Купить'
+  tickets:
+    index:
+      title: 'Билеты'
+      train_number_title: 'Номер поезда'
+      train_route_title: 'Маршрут'
+      passenger_title: 'Фамилия'
+      buyer_title: 'Покупатель'
+    new:
+      title: 'Новый билет'

@@ -10,10 +10,10 @@
 
   <body>
     <% if user_signed_in? %>
-      <p><%= link_to 'Выйти', destroy_user_session_path, method: :delete %></p>
+      <p><%= link_to t('.sign_out'), destroy_user_session_path, method: :delete %></p>
       <p>Привет, <%= current_user.fullname %></p>
     <% else %>
-      <p><%= link_to 'Войти', new_user_session_path %></p>
+      <p><%= link_to t('.sign_in'), new_user_session_path %></p>
     <% end %>
     <p id="notice" class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>

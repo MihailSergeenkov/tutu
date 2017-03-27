@@ -1,7 +1,7 @@
 <%= form_for([:admin, train, carriage]) do |f| %>
   <% if carriage.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(carriage.errors.count, "error") %> prohibited this carriage from being saved:</h2>
+      <h2><%= t('common.errors') %></h2>
 
       <ul>
       <% carriage.errors.full_messages.each do |message| %>
@@ -47,6 +47,6 @@
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "#{@carriage.new_record? ? t('common.create') : t('common.update')}" %>
   </div>
 <% end %>

@@ -1,15 +1,15 @@
 <p>
-  <strong>Название:</strong>
+  <strong><%= t('.route_name_title') %>:</strong>
   <%= @route.name %>
 </p>
 
 <% if @route.trains.present? %>
   <table>
-    <caption><strong>Поезда на маршруте</strong></caption>
+    <caption><strong><%= t('.trains_on_route') %></strong></caption>
     <thead>
       <tr>
-        <th>Номер</th>
-        <th>Маршрут</th>
+        <th><%= t('.train_number_title') %></th>
+        <th><%= t('.train_route_title') %></th>
         <th colspan="3"></th>
       </tr>
     </thead>
@@ -19,17 +19,17 @@
     </tbody>
   </table>
 <% else %>
-  <strong>Поездов на маршруте нет</strong>
+  <strong><%= t('.no_trains_on_route') %></strong>
 <% end %>
 <br />
 <% if @route.railway_stations.present? %>
   <table>
-    <caption><strong>Станции на маршруте</strong></caption>
+    <caption><strong><%= t('.station_on_route') %></strong></caption>
     <thead>
       <tr>
-        <th>Название</th>
-        <th>Позиция</th>
-        <th>Прибытие/Убитие</th>
+        <th><%= t('.route_name_title') %></th>
+        <th><%= t('.route_position_title') %></th>
+        <th><%= t('.route_departure_arrival_title') %></th>
         <th colspan="2"></th>
       </tr>
     </thead>
@@ -42,7 +42,7 @@
             <%= form_tag(position_admin_railway_station_path(railway_station), method: :patch) do %>
               <%= text_field_tag(:position, railway_station.position_in(@route)) %>
               <%= hidden_field_tag(:route_id, @route.id) %>
-              <%= submit_tag 'Сохранить' %>
+              <%= submit_tag t('.save_station_position_button') %>
             <% end %>
           </td>
           <td>
@@ -50,7 +50,7 @@
               <%= time_field_tag(:arrival_time, railway_station.arrival_time_in(@route)) %>
               <%= time_field_tag(:departure_time, railway_station.departure_time_in(@route)) %>
               <%= hidden_field_tag(:route_id, @route.id) %>
-              <%= submit_tag 'Сохранить' %>
+              <%= submit_tag t('.save_time_button') %>
             <% end %>
           </td>
         </tr>
@@ -58,8 +58,8 @@
     </tbody>
   </table>
 <% else %>
-  <strong>Станций на маршруте нет</strong>
+  <strong><%= t('.no_stations_on_route') %></strong>
 <% end %>
 <br />
-<%= link_to 'Изменить', edit_admin_route_path(@route) %> |
-<%= link_to 'Назад', admin_routes_path %>
+<%= link_to t('common.edit'), edit_admin_route_path(@route) %> |
+<%= link_to t('common.back'), admin_routes_path %>

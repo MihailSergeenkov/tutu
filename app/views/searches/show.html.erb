@@ -1,8 +1,8 @@
 <table>
-  <caption><strong>Поиск билета</strong></caption>
+  <caption><strong><%= t('.title') %></strong></caption>
   <thead>
     <tr>
-      <th>Начальная/Конечная станция</th>
+      <th><%= t('.start_finish_station_title') %></th>
     </tr>
   </thead>
 
@@ -12,7 +12,7 @@
         <%= form_tag search_path do %>
           <%= select_tag :start_station_id, options_from_collection_for_select(@railway_stations, :id, :title) %>
           <%= select_tag :finish_station_id, options_from_collection_for_select(@railway_stations, :id, :title) %>
-          <%= submit_tag 'Найти' %>
+          <%= submit_tag t('.find_button') %>
         <% end %>
       </td>
     </tr>
@@ -20,15 +20,15 @@
 </table>
 <% if @results.present? %>
   <table>
-    <caption><strong>Результат поиска</strong></caption>
+    <caption><strong><%= t('.find_result') %></strong></caption>
     <thead>
       <tr>
-        <th>Поезд номер</th>
-        <th>Маршрут</th>
-        <th>Начальная станция</th>
-        <th>Конечная станция</th>
-        <th>Отправление со станции</th>
-        <th>Прибытие на конечную станцию</th>
+        <th><%= t('.train_number_title') %></th>
+        <th><%= t('.train_route_title') %></th>
+        <th><%= t('.route_start_station') %></th>
+        <th><%= t('.route_finish_station') %></th>
+        <th><%= t('.time_departure') %></th>
+        <th><%= t('.time_arrival') %></th>
         <th></th>
       </tr>
     </thead>
@@ -47,7 +47,7 @@
               <%= hidden_field_tag(:train_id, result[:train_id]) %>
               <%= hidden_field_tag(:start_station_id, result[:start_station_id]) %>
               <%= hidden_field_tag(:finish_station_id, result[:finish_station_id]) %>
-              <%= submit_tag 'Купить' %>
+              <%= submit_tag t('.buy_button') %>
             <% end %>
           </td>
         </tr>

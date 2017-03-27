@@ -1,7 +1,7 @@
 <p>
-  <strong>Название:</strong>
+  <strong><%= t('.station_name_title') %>:</strong>
   <%= @railway_station.title %>
 </p>
 
-<%= link_to 'Изменение', edit_admin_railway_station_path(@railway_station) %> |
-<%= link_to 'Назад', admin_railway_stations_path %>
+<%= link_to t('common.edit'), edit_admin_railway_station_path(@railway_station) %> |
+<%= link_to t('common.back'), admin_railway_stations_path %>
