@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170326144211) do
+ActiveRecord::Schema.define(version: 20170328072622) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "carriages", force: :cascade do |t|
     t.integer  "train_id"
@@ -24,7 +27,8 @@ ActiveRecord::Schema.define(version: 20170326144211) do
     t.integer  "seats"
     t.integer  "number"
     t.integer  "position"
-    t.index ["train_id"], name: "index_carriages_on_train_id"
+    t.index ["id", "type"], name: "index_carriages_on_id_and_type", using: :btree
+    t.index ["train_id"], name: "index_carriages_on_train_id", using: :btree
   end
 
   create_table "railway_stations", force: :cascade do |t|
@@ -41,8 +45,8 @@ ActiveRecord::Schema.define(version: 20170326144211) do
     t.integer  "position"
     t.time     "arrival_time"
     t.time     "departure_time"
-    t.index ["railway_station_id"], name: "index_railway_stations_routes_on_railway_station_id"
-    t.index ["route_id"], name: "index_railway_stations_routes_on_route_id"
+    t.index ["railway_station_id"], name: "index_railway_stations_routes_on_railway_station_id", using: :btree
+    t.index ["route_id"], name: "index_railway_stations_routes_on_route_id", using: :btree
   end
 
   create_table "routes", force: :cascade do |t|
@@ -60,10 +64,10 @@ ActiveRecord::Schema.define(version: 20170326144211) do
     t.string   "last_name"
     t.string   "second_name"
     t.string   "passport_number"
-    t.index ["finish_station_id"], name: "index_tickets_on_finish_station_id"
-    t.index ["start_station_id"], name: "index_tickets_on_start_station_id"
-    t.index ["train_id"], name: "index_tickets_on_train_id"
-    t.index ["user_id"], name: "index_tickets_on_user_id"
+    t.index ["finish_station_id"], name: "index_tickets_on_finish_station_id", using: :btree
+    t.index ["start_station_id"], name: "index_tickets_on_start_station_id", using: :btree
+    t.index ["train_id"], name: "index_tickets_on_train_id", using: :btree
+    t.index ["user_id"], name: "index_tickets_on_user_id", using: :btree
   end
 
   create_table "trains", force: :cascade do |t|
@@ -73,15 +77,14 @@ ActiveRecord::Schema.define(version: 20170326144211) do
     t.integer  "route_id"
     t.integer  "current_station_id"
     t.boolean  "tail",               default: false
-    t.index ["current_station_id"], name: "index_trains_on_current_station_id"
-    t.index ["route_id"], name: "index_trains_on_route_id"
+    t.index ["current_station_id"], name: "index_trains_on_current_station_id", using: :btree
+    t.index ["route_id"], name: "index_trains_on_route_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
-    t.string   "username"
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
@@ -99,9 +102,13 @@ ActiveRecord::Schema.define(version: 20170326144211) do
     t.boolean  "admin",                  default: false
     t.string   "first_name"
     t.string   "last_name"
-    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "carriages", "trains"
+  add_foreign_key "railway_stations_routes", "railway_stations"
+  add_foreign_key "railway_stations_routes", "routes"
+  add_foreign_key "tickets", "trains"
 end

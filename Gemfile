@@ -1,3 +1,4 @@
+ruby '2.3.1'
 source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
@@ -9,7 +10,7 @@ end
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.2'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -30,6 +31,9 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 gem 'therubyracer'
 gem 'twitter-bootstrap-rails'
+
+gem 'rails_12factor'
+gem 'postmark-rails', '>= 0.10.0'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
