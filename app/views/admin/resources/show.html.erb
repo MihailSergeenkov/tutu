@@ -1,9 +1,8 @@
-<p>Список ресурсов</p>
-
-<ul>
-  <li><%= link_to 'Поезда', admin_trains_path %></li>
-  <li><%= link_to 'Станции', admin_railway_stations_path %></li>
-  <li><%= link_to 'Маршруты', admin_routes_path %></li>
-  <li><%= link_to 'Билеты', tickets_path %></li>
-  <li><%= link_to 'Поиск', search_path %></li>
-</ul>
+<h3><%= t('.title') %></h3>
+<div class="btn-group-vertical" role="group">
+  <%= link_to t('.trains'), admin_trains_path, class: 'btn btn-default dropdown-toggle' %>
+  <%= link_to t('.stations'), admin_railway_stations_path, class: 'btn btn-default dropdown-toggle' %>
+  <%= link_to t('.routes'), admin_routes_path, class: 'btn btn-default dropdown-toggle' %>
+  <%= link_to t('.tickets'), tickets_path, class: 'btn btn-default dropdown-toggle' %>
+  <%= link_to t('.search'), search_path, class: 'btn btn-default dropdown-toggle' %>
+</div>

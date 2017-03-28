@@ -1,64 +1,64 @@
 <p>
-  <strong>Номер:</strong>
+  <strong><%= t('.train_number_title') %>:</strong>
   <%= @train.number %>
 </p>
 
 <p>
-  <strong>Маршрут:</strong>
-  <%= @train.route.present? ? @train.route.name : 'Маршрут не назначен' %>
+  <strong><%= t('.train_route_title') %>:</strong>
+  <%= @train.route.present? ? @train.route.name : t('.train_route_unknown')  %>
 </p>
 
 <p>
-  <strong>с головы/c хвоста поезда:</strong>
-  <%= @train.tail? ? 'Нумерация c хвоста поезда' : 'Нумерация c головы поезда' %>
+  <strong><%= t('.train_tail_title') %>:</strong>
+  <%= @train.tail? ? t('.train_tail_true') : t('.train_tail_false') %>
 </p>
 
 <p>
-  <strong>Купейных вагонов:</strong>
+  <strong><%= t('.train_coupe_carriages') %>:</strong>
   <%= @train.coupe_count %>
   <% if @train.coupe.present? %>
-    <strong>Кол-во верхних мест:</strong>
+    <strong><%= t('.train_top_seats_count') %>:</strong>
     <%= @train.coupe.top_seats %>
-    <strong>Кол-во нижних мест:</strong>
+    <strong><%= t('.train_bottom_seats_count') %>:</strong>
     <%= @train.coupe.bottom_seats %>
   <% end %>
 </p>
 
 <p>
-  <strong>Плацкартных вагонов:</strong>
+  <strong><%= t('.train_economy_carriages') %>:</strong>
   <%= @train.economy_count %>
   <% if @train.economy.present? %>
-    <strong>Кол-во верхних мест:</strong>
+    <strong><%= t('.train_top_seats_count') %>:</strong>
     <%= @train.economy.top_seats %>
-    <strong>Кол-во нижних мест:</strong>
+    <strong><%= t('.train_bottom_seats_count') %>:</strong>
     <%= @train.economy.bottom_seats %>
-    <strong>Кол-во верхних боковых мест:</strong>
+    <strong><%= t('.train_side_top_seats_count') %>:</strong>
     <%= @train.economy.side_top_seats %>
-    <strong>Кол-во нижних боковых мест:</strong>
+    <strong><%= t('.train_side_bottom_seats_count') %>:</strong>
     <%= @train.economy.side_bottom_seats %>
   <% end %>
 </p>
 
 <p>
-  <strong>СВ вагонов:</strong>
+  <strong><%= t('.train_business_carriages') %>:</strong>
   <%= @train.business_count %>
   <% if @train.business.present? %>
-    <strong>Кол-во нижних мест:</strong>
+    <strong><%= t('.train_bottom_seats_count') %>:</strong>
     <%= @train.business.bottom_seats %>
   <% end %>
 </p>
 
 <p>
-  <strong>Сидячих вагонов:</strong>
+  <strong><%= t('.train_seat_carriages') %>:</strong>
   <%= @train.seat_count %>
   <% if @train.business.present? %>
-    <strong>Кол-во мест:</strong>
+    <strong><%= t('.train_seats_count') %>:</strong>
     <%= @train.seat.seats %>
   <% end %>
 </p>
 
 <% if @train.carriages.present? %>
-  <strong>Вагоны списком:</strong>
+  <strong><%= t('.carriages_list_title') %>:</strong>
   <% if @train.tail? %>
     <% @train.carriages.desc_position.each do |carriage| %>
       <p>
@@ -74,6 +74,6 @@
   <% end %>
 <% end %>
 
-<%= link_to 'Добавить вагон', new_admin_train_carriage_path(@train) %> |
-<%= link_to 'Изменение', edit_admin_train_path(@train) %> |
-<%= link_to 'Назад', admin_trains_path %>
+<%= link_to t('.new_carriage_button'), new_admin_train_carriage_path(@train), class: 'btn btn-primary' %> |
+<%= link_to t('common.edit'), edit_admin_train_path(@train), class: 'btn btn-primary' %> |
+<%= link_to t('common.back'), admin_trains_path, class: 'btn btn-primary' %>

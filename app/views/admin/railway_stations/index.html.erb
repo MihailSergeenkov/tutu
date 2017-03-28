@@ -1,9 +1,9 @@
-<h1>Железнодорожная станция</h1>
+<h3><%= t('.title') %></h3>
 
-<table>
+<table class='table table-hover'>
   <thead>
     <tr>
-      <th>Название</th>
+      <th><%= t('.name') %></th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -15,4 +15,4 @@
 
 <br>
 
-<%= link_to 'Новая железнодорожная станция', new_admin_railway_station_path %>
+<%= link_to t('.new_station'), new_admin_railway_station_path, class: 'btn btn-primary' %>

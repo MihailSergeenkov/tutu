@@ -3,9 +3,9 @@
   <td><%= ticket.train.route.name %></td>
   <td><%= ticket.first_name %></td>
   <td><%= ticket.user.email %></td>
-  <td><%= link_to 'Посмотреть', ticket_path(ticket) %></td>
+  <td><%= link_to t('common.show'), ticket_path(ticket) %></td>
   <% if current_user.admin? %>
-    <td><%= link_to 'Редактировать', edit_ticket_path(ticket) %></td>
+    <td><%= link_to t('common.edit'), edit_ticket_path(ticket) %></td>
   <% end %>
-  <td><%= link_to 'Удалить', ticket_path(ticket), method: :delete, data: { confirm: 'Вы уверены?' } %></td>
+  <td><%= link_to t('common.delete'), ticket_path(ticket), method: :delete, data: { confirm: 'Вы уверены?' } %></td>
 </tr>

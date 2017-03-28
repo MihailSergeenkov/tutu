@@ -1,12 +1,12 @@
-<h1>Билеты</h1>
+<h3><%= t('.title') %></h3>
 
-<table>
+<table class='table table-hover'>
   <thead>
     <tr>
-      <th>Поезд</th>
-      <th>Маршрут</th>
-      <th>Фамилия</th>
-      <th>Покупатель</th>
+      <th><%= t('.train_number_title') %></th>
+      <th><%= t('.train_route_title') %></th>
+      <th><%= t('.passenger_title') %></th>
+      <th><%= t('.buyer_title') %></th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,4 +18,4 @@
 
 <br>
 
-<%= link_to 'Назад', search_path %>
+<%= link_to t('common.back'), search_path, class: 'btn btn-primary' %>

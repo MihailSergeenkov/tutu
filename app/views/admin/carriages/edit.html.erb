@@ -1,6 +1,59 @@
-<h1>Изменение вагона</h1>
+<div class="row">
+  <h3><%= t('.title') %></h3>
 
-<%= render 'form', train: @train, carriage: @carriage %>
+  <%= form_for([:admin, @carriage], html: { class: 'form-horizontal col-sm-6', role: 'form' }) do |f| %>
+    <% if @carriage.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= t('common.errors') %></h2>
 
-<%= link_to 'Посмотреть', admin_carriage_path(@carriage) %> |
-<%= link_to 'Назад', admin_train_path(@train) %>
+        <ul>
+        <% @carriage.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.label :number, class: 'col-sm-3 control-label' %>
+      <%= f.text_field :number, class: 'col-sm-3 form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :type, class: 'col-sm-3 control-label' %>
+      <%= f.select :type, @carriage.types_select, {}, class: 'col-sm-3 form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :top_seats, class: 'col-sm-3 control-label' %>
+      <%= f.number_field :top_seats, in: 1..50, step: 1, class: 'col-sm-3 form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :bottom_seats, class: 'col-sm-3 control-label' %>
+      <%= f.number_field :bottom_seats, in: 1..50, step: 1, class: 'col-sm-3 form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :side_top_seats, class: 'col-sm-3 control-label' %>
+      <%= f.number_field :side_top_seats, in: 1..50, step: 1, class: 'col-sm-3 form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :side_bottom_seats, class: 'col-sm-3 control-label' %>
+      <%= f.number_field :side_bottom_seats, in: 1..50, step: 1, class: 'col-sm-3 form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :seats, class: 'col-sm-3 control-label' %>
+      <%= f.number_field :seats, in: 1..100, step: 1, class: 'col-sm-3 form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.submit t('common.update'), class: 'form-control' %>
+    </div>
+  <% end %>
+</div>
+
+<%= link_to t('common.show'), admin_carriage_path(@carriage), class: 'btn btn-primary'  %> |
+<%= link_to t('common.back'), admin_train_path(@carriage.train), class: 'btn btn-primary'  %>

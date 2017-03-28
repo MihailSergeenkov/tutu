@@ -1,55 +1,55 @@
 <p>
-  <strong>Номер:</strong>
+  <strong><%= t('.carriage_number_title') %>:</strong>
   <%= @carriage.number %>
 </p>
 
 <p>
-  <strong>Поезд:</strong>
+  <strong><%= t('.carriage_train_title') %>:</strong>
   <%= link_to @carriage.train.number, admin_train_path(@carriage.train) %>
 </p>
 
 <p>
-  <strong>Тип:</strong>
+  <strong><%= t('.carriage_type_title') %>:</strong>
   <%= @carriage.type %>
 </p>
 
 <p>
-  <strong>Порядковый номер:</strong>
+  <strong><%= t('.carriage_position_title') %>:</strong>
   <%= @carriage.position %>
 </p>
 
 <% if @carriage.type == 'EconomyCarriage' || @carriage.type == 'CoupeCarriage' %>
   <p>
-    <strong>Кол-во верхних мест:</strong>
+    <strong><%= t('.carriage_top_seats_count') %>:</strong>
     <%= @carriage.top_seats %>
   </p>
 <% end %>
 
 <% if @carriage.type == 'EconomyCarriage' || @carriage.type == 'BusinessCarriage' || @carriage.type == 'CoupeCarriage' %>
   <p>
-    <strong>Кол-во нижних мест:</strong>
+    <strong><%= t('.carriage_bottom_seats_count') %>:</strong>
     <%= @carriage.bottom_seats %>
   </p>
 <% end %>
 
 <% if @carriage.type == 'EconomyCarriage' %>
   <p>
-    <strong>Кол-во верхних боковых мест:</strong>
+    <strong><%= t('.carriage_side_top_seats_count') %>:</strong>
     <%= @carriage.side_top_seats %>
   </p>
 
   <p>
-    <strong>Кол-во нижних боковых мест:</strong>
+    <strong><%= t('.carriage_side_bottom_seats_count') %>:</strong>
     <%= @carriage.side_bottom_seats %>
   </p>
 <% end %>
 
 <% if @carriage.type == 'SeatCarriage' %>
   <p>
-    <strong>Кол-во мест:</strong>
+    <strong><%= t('.carriage_seats_count') %>:</strong>
     <%= @carriage.seats %>
   </p>
 <% end %>
 
-<%= link_to 'Изменение', edit_admin_carriage_path(@carriage) %> |
-<%= link_to 'Назад', admin_train_path(@carriage.train) %>
+<%= link_to t('common.edit'), edit_admin_carriage_path(@carriage), class: 'btn btn-primary' %> |
+<%= link_to t('common.back'), admin_train_path(@carriage.train), class: 'btn btn-primary' %>

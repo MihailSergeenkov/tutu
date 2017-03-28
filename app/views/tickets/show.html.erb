@@ -1,5 +1,6 @@
 <p>
   <strong>Поезд:</strong>
+  <strong><%= t('.train_number') %></strong>
   <%= @ticket.train.number %>
 </p>
 <p>
@@ -35,4 +36,4 @@
   <%= @ticket.user.email %>
 </p>
 
-<%= link_to 'Назад', search_path %>
+<%= link_to 'Назад', search_path, class: 'btn btn-primary' %>
