@@ -22,29 +22,52 @@
       <%= f.select :type, @carriage.types_select, {}, class: 'col-sm-3 form-control' %>
     </div>
 
-    <div class="form-group">
-      <%= f.label :top_seats, class: 'col-sm-3 control-label' %>
-      <%= f.number_field :top_seats, in: 1..50, step: 1, class: 'col-sm-3 form-control' %>
+    <div class="economy-carriage">
+      <div class="form-group">
+        <%= f.label :top_seats, class: 'col-sm-3 control-label' %>
+        <%= f.number_field :top_seats, in: 1..50, step: 1, class: 'col-sm-3 form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :bottom_seats, class: 'col-sm-3 control-label' %>
+        <%= f.number_field :bottom_seats, in: 1..50, step: 1, class: 'col-sm-3 form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :side_top_seats, class: 'col-sm-3 control-label' %>
+        <%= f.number_field :side_top_seats, in: 1..50, step: 1, class: 'col-sm-3 form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :side_bottom_seats, class: 'col-sm-3 control-label' %>
+        <%= f.number_field :side_bottom_seats, in: 1..50, step: 1, class: 'col-sm-3 form-control' %>
+      </div>
     </div>
 
-    <div class="form-group">
-      <%= f.label :bottom_seats, class: 'col-sm-3 control-label' %>
-      <%= f.number_field :bottom_seats, in: 1..50, step: 1, class: 'col-sm-3 form-control' %>
+    <div class="coupe-carriage">
+      <div class="form-group">
+        <%= f.label :top_seats, class: 'col-sm-3 control-label' %>
+        <%= f.number_field :top_seats, in: 1..50, step: 1, class: 'col-sm-3 form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :bottom_seats, class: 'col-sm-3 control-label' %>
+        <%= f.number_field :bottom_seats, in: 1..50, step: 1, class: 'col-sm-3 form-control' %>
+      </div>
     </div>
 
-    <div class="form-group">
-      <%= f.label :side_top_seats, class: 'col-sm-3 control-label' %>
-      <%= f.number_field :side_top_seats, in: 1..50, step: 1, class: 'col-sm-3 form-control' %>
+    <div class="business-carriage">
+      <div class="form-group">
+        <%= f.label :bottom_seats, class: 'col-sm-3 control-label' %>
+        <%= f.number_field :bottom_seats, in: 1..50, step: 1, class: 'col-sm-3 form-control' %>
+      </div>
     </div>
 
-    <div class="form-group">
-      <%= f.label :side_bottom_seats, class: 'col-sm-3 control-label' %>
-      <%= f.number_field :side_bottom_seats, in: 1..50, step: 1, class: 'col-sm-3 form-control' %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :seats, class: 'col-sm-3 control-label' %>
-      <%= f.number_field :seats, in: 1..100, step: 1, class: 'col-sm-3 form-control' %>
+    <div class="seat-carriage">
+      <div class="form-group">
+        <%= f.label :seats, class: 'col-sm-3 control-label' %>
+        <%= f.number_field :seats, in: 1..100, step: 1, class: 'col-sm-3 form-control' %>
+      </div>
     </div>
 
     <div class="form-group">

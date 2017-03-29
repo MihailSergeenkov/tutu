@@ -1,0 +1,21 @@
+<%= form_for [:admin, train], html: { style: "display: none" } do |f| %>
+  <% if train.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= t('common.errors') %></h2>
+
+      <ul>
+      <% train.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :number, class: 'sr-only' %><br>
+    <%= f.text_field :number %>
+  </div>
+  <div class="actions">
+    <%= f.submit t('common.update') %>
+  </div>
+<% end %>
