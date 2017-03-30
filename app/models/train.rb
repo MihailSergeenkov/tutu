@@ -4,6 +4,8 @@ class Train < ApplicationRecord
   has_many :carriages
   has_many :tickets
 
+  validates :number, presence: true
+
   delegate :economy_count, to: :carriages
   delegate :business_count, to: :carriages
   delegate :coupe_count, to: :carriages

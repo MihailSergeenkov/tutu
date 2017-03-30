@@ -2,11 +2,11 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 ready = ->
-  $('a.edit_train').click (e) ->
+  $('a.edit_route').click (e) ->
     e.preventDefault()
-    train_id = $(this).data('trainId')
-    form = $('#edit_train_' + train_id)
-    number = $('#train_number_' + train_id)
+    route_id = $(this).data('routeId')
+    form = $('#edit_route_' + route_id)
+    name = $('#route_name_' + route_id)
 
     if !$(this).hasClass('cancel')
       $(this).html('Отмена')
@@ -16,6 +16,6 @@ ready = ->
       $(this).removeClass('cancel')
 
     form.toggle()
-    number.toggle()
+    name.toggle()
 
 $(document).on('turbolinks:load', ready)
